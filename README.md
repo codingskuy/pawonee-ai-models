@@ -19,7 +19,10 @@ models/referensi_bahan.json     # gizi (kkal) dan harga referensi per bahan (ASU
 eval/evaluate.py                # pemeriksaan mutu otomatis terhadap skema + aturan grade-2
 eval/requirements.txt           # dependensi evaluasi (jsonschema==4.23.0)
 eval/metrics.md                 # hasil evaluasi terakhir
-tests/                          # uji pytest (skema, isi bank)
+tests/                          # uji pytest (skema, isi bank, fixture paritas)
+fixtures/paritas-32-kasus.json  # fixture paritas 32 kasus untuk KMP dan web (lihat fixtures/README.md)
+eval/rekomendasi_ref.py         # implementasi rujukan rumus rekomendasi + PorsiScaler (penghasil fixture)
+eval/buat_fixture.py            # regenerasi fixture dari bank 12 resep
 requirements-dev.txt            # dependensi uji (pytest)
 ```
 
@@ -42,6 +45,15 @@ Bank dikunci 12 resep pada v1.0.0 (resep ke-13 hanya v2.0.0). Untuk mengubah isi
 3. Perbarui `eval/metrics.md` dengan tanggal dan hasil.
 4. Perubahan skema atau bank = perubahan kontrak: bump versi, tulis ADR baru, selaraskan `:shared:pantry-resep`.
 5. Sinkronkan ke database `pawonee` lewat migrasi di `pawonee-backend-service`.
+
+## Fixture paritas KMP dan web
+
+`fixtures/paritas-32-kasus.json` adalah fixture bersama uji skor (selisih < 0,01 memblokir rilis web). Cara memakai dan spesifikasi rumus: [`fixtures/README.md`](fixtures/README.md). Regenerasi dari bank 12 resep:
+
+```bash
+python eval/buat_fixture.py            # tulis ulang fixture
+python eval/buat_fixture.py --periksa  # gagal bila fixture terbit usang
+```
 
 ## Repo terkait
 
