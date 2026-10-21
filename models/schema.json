@@ -1,34 +1,130 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Skema Resep dan Preferensi Pawonee",
+  "title": "Skema Bank Resep Grade-2 Pawonee v1.0.0",
+  "description": "Cermin lintas platform dari :shared:pantry-resep (FSD 20). Berat gram, uang rupiah, dan waktu menit selalu integer. Bank dikunci 12 resep (R-01..R-12) pada v1.0.0.",
   "type": "object",
+  "required": ["versiBank", "versiSkema", "resep", "substitusi"],
+  "additionalProperties": false,
+  "properties": {
+    "versiBank": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "versiSkema": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "resep": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": { "$ref": "#/definitions/resep" }
+    },
+    "substitusi": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/substitusi" }
+    }
+  },
   "definitions": {
-    "bahan": {
+    "kodeGrade": { "enum": ["G2-V", "G2-U", "G2-S", "NON-G2"] },
+    "satuan": { "enum": ["gram", "ml", "pcs"] },
+    "alergen": { "enum": ["udang", "telur", "kacang-tanah", "kedelai", "susu-sapi", "ikan", "gluten"] },
+    "alat": { "enum": ["kompor", "wajan", "panci", "kukusan", "blender", "oven", "air-fryer"] },
+    "komponen": {
       "type": "object",
-      "required": ["nama"],
+      "required": ["nama", "jumlah", "satuan", "kodeGrade"],
+      "additionalProperties": false,
       "properties": {
         "nama": { "type": "string", "minLength": 1 },
-        "jumlah": { "type": "string" }
-      },
-      "additionalProperties": false
+        "jumlah": { "type": "integer", "minimum": 1 },
+        "satuan": { "$ref": "#/definitions/satuan" },
+        "kodeGrade": { "$ref": "#/definitions/kodeGrade" }
+      }
+    },
+    "bahan": {
+      "type": "object",
+      "required": ["nama", "jumlah", "satuan", "kodeGrade", "jenis"],
+      "additionalProperties": false,
+      "properties": {
+        "nama": { "type": "string", "minLength": 1 },
+        "jumlah": { "type": "integer", "minimum": 1, "description": "Takaran dasar 4 porsi (BR-107)." },
+        "satuan": { "$ref": "#/definitions/satuan" },
+        "kodeGrade": { "$ref": "#/definitions/kodeGrade" },
+        "jenis": {
+          "enum": ["sayur", "protein", "telur", "karbo", "bumbu", "santan", "cair"],
+          "description": "Menentukan faktor skala (bahan/bumbu/air) dan aturan pembulatan belanja (BR-105, BR-106)."
+        }
+      }
     },
     "resep": {
       "type": "object",
-      "required": ["id", "nama", "bahan", "langkah", "menit", "levelPedas", "estimasiBiaya"],
+      "required": [
+        "kode", "id", "nama", "kelompok", "bahan", "langkah", "menit", "jumlahKompor",
+        "levelPedas", "estimasiBiaya", "alergen", "alat", "flag", "pendamping", "grade"
+      ],
+      "additionalProperties": false,
       "properties": {
+        "kode": { "type": "string", "pattern": "^R-(0[1-9]|1[0-2])$" },
         "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
         "nama": { "type": "string", "minLength": 1 },
+        "kelompok": { "enum": ["kuah", "tumis", "sambal", "lauk", "kukus"] },
         "bahan": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/bahan" } },
         "langkah": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
         "menit": { "type": "integer", "minimum": 1, "maximum": 240 },
-        "levelPedas": { "type": "integer", "minimum": 0, "maximum": 5 },
-        "estimasiBiaya": { "type": "integer", "minimum": 0 },
+        "jumlahKompor": { "type": "integer", "const": 1 },
+        "levelPedas": { "type": "integer", "minimum": 0, "maximum": 3 },
+        "estimasiBiaya": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Rupiah untuk satu makan keluarga 4 jiwa, termasuk pendamping standar."
+        },
+        "alergen": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/definitions/alergen" } },
+        "alat": { "type": "array", "uniqueItems": true, "minItems": 1, "items": { "$ref": "#/definitions/alat" } },
+        "flag": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "enum": ["mengandung-daging", "mengandung-santan", "varian-nabati", "lunak-lansia", "sapu-stok"] }
+        },
+        "pendamping": {
+          "type": "object",
+          "required": ["nasi", "lauk"],
+          "additionalProperties": false,
+          "properties": {
+            "nasi": { "type": "boolean", "description": "Beras 360 g mentah per 4 jiwa (BR-104) ditambahkan pada paket makan." },
+            "lauk": { "enum": ["tahu", "tempe", "telur", null], "description": "Lauk nabati standar BR-104 bila resep tanpa protein." }
+          }
+        },
         "grade": { "type": "integer", "const": 2 }
-      },
-      "additionalProperties": false
+      }
+    },
+    "substitusi": {
+      "type": "object",
+      "required": ["id", "sumber", "hilang", "pengganti"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^SUB-\\d{2}$" },
+        "sumber": { "type": "string", "minLength": 1 },
+        "hilang": {
+          "type": "object",
+          "required": ["nama", "jumlah", "satuan"],
+          "additionalProperties": false,
+          "properties": {
+            "nama": { "type": "string", "minLength": 1 },
+            "jumlah": { "type": "integer", "minimum": 1 },
+            "satuan": { "$ref": "#/definitions/satuan" }
+          }
+        },
+        "pengganti": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Pilihan alternatif (salah satu); tiap pilihan terdiri dari satu atau lebih komponen yang semuanya dipakai.",
+          "items": {
+            "type": "object",
+            "required": ["komponen", "alergen", "tambahMenit"],
+            "additionalProperties": false,
+            "properties": {
+              "komponen": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/komponen" } },
+              "alergen": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/definitions/alergen" } },
+              "tambahMenit": { "type": "integer", "minimum": 0 }
+            }
+          }
+        }
+      }
     }
-  },
-  "properties": {
-    "resep": { "type": "array", "items": { "$ref": "#/definitions/resep" } }
   }
 }
