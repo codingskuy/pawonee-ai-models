@@ -1,0 +1,172 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Fixture paritas 32 kasus Pawonee v1.0.0",
+  "description": "JSON netral untuk uji KMP (Kotlin) dan web (TypeScript). Kasus mereferensikan resep lewat kode R-NN dari models/bank_resep_grade2.json; definisi resep tidak diduplikasi.",
+  "type": "object",
+  "required": ["versiFixture", "versiBank", "versiSkema", "bankSha256", "bankBerkas", "ambangSelisih", "konfigurasi", "kasus"],
+  "additionalProperties": false,
+  "properties": {
+    "versiFixture": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "versiBank": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "versiSkema": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "bankSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "bankBerkas": { "type": "string" },
+    "ambangSelisih": { "type": "number", "const": 0.01 },
+    "konfigurasi": {
+      "type": "object",
+      "required": ["faktorPorsiPersen", "kelipatanPembulatan", "jenisFaktorBumbu", "jenisFaktorAir", "bahanDapurPokok", "harga"],
+      "additionalProperties": false,
+      "properties": {
+        "faktorPorsiPersen": {
+          "type": "object",
+          "propertyNames": { "pattern": "^[1-8]$" },
+          "minProperties": 8,
+          "additionalProperties": {
+            "type": "object",
+            "required": ["bahan", "bumbu", "air"],
+            "additionalProperties": false,
+            "properties": {
+              "bahan": { "type": "integer", "minimum": 1 },
+              "bumbu": { "type": "integer", "minimum": 1 },
+              "air": { "type": "integer", "minimum": 1 },
+              "asumsi": { "type": "boolean" }
+            }
+          }
+        },
+        "kelipatanPembulatan": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 1 } },
+        "jenisFaktorBumbu": { "type": "array", "items": { "type": "string" } },
+        "jenisFaktorAir": { "type": "array", "items": { "type": "string" } },
+        "bahanDapurPokok": { "type": "array", "items": { "type": "string" } },
+        "harga": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["satuan", "per", "harga"],
+            "additionalProperties": false,
+            "properties": {
+              "satuan": { "enum": ["gram", "ml", "pcs"] },
+              "per": { "type": "integer", "minimum": 1 },
+              "harga": { "type": "integer", "minimum": 0 }
+            }
+          }
+        }
+      }
+    },
+    "kasus": {
+      "type": "array",
+      "minItems": 32,
+      "maxItems": 32,
+      "items": { "$ref": "#/definitions/kasus" }
+    }
+  },
+  "definitions": {
+    "kodeGrade": { "enum": ["G2-V", "G2-U", "G2-S", "NON-G2"] },
+    "kodeResep": { "type": "string", "pattern": "^R-(0[1-9]|1[0-2])$" },
+    "kasus": {
+      "type": "object",
+      "required": ["id", "judul", "masukan", "harapan"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[ABC]-\\d{2}$" },
+        "judul": { "type": "string", "minLength": 1 },
+        "masukan": {
+          "type": "object",
+          "required": ["profil", "stok", "jiwa", "waktuMaksimalMenit"],
+          "additionalProperties": false,
+          "properties": {
+            "jiwa": { "type": "integer", "description": "Sengaja tidak dibatasi 1..8: nilai di luar rentang menguji JIWA_DI_LUAR_RENTANG." },
+            "waktuMaksimalMenit": { "type": "integer", "minimum": 10, "maximum": 45 },
+            "profil": {
+              "type": "object",
+              "required": ["alergi", "pantangan", "budgetPerMakan", "levelPedas", "alatMasak"],
+              "additionalProperties": false,
+              "properties": {
+                "alergi": { "type": "array", "items": { "enum": ["udang", "telur", "kacang-tanah", "kedelai", "susu-sapi", "ikan", "gluten"] } },
+                "pantangan": {
+                  "type": "array",
+                  "items": { "enum": ["halal-selalu", "vegetarian-nabati", "tanpa-santan", "rendah-garam", "rendah-gula", "lunak-lansia"] }
+                },
+                "budgetPerMakan": { "type": "integer", "minimum": 0 },
+                "levelPedas": { "type": "integer", "minimum": 0, "maximum": 3 },
+                "alatMasak": { "type": "array", "items": { "enum": ["kompor", "wajan", "panci", "kukusan", "blender", "oven", "air-fryer"] } }
+              }
+            },
+            "stok": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["nama", "jumlah", "satuan", "kodeGrade", "kedaluwarsaHari"],
+                "additionalProperties": false,
+                "properties": {
+                  "nama": { "type": "string", "minLength": 1 },
+                  "jumlah": { "type": "integer", "minimum": 0 },
+                  "satuan": { "enum": ["gram", "ml", "pcs"] },
+                  "kodeGrade": { "$ref": "#/definitions/kodeGrade" },
+                  "kedaluwarsaHari": { "type": ["integer", "null"], "minimum": 0 }
+                }
+              }
+            }
+          }
+        },
+        "harapan": {
+          "type": "object",
+          "required": ["galat", "modeTanpaStok", "rekomendasi"],
+          "additionalProperties": false,
+          "properties": {
+            "galat": { "enum": ["JIWA_DI_LUAR_RENTANG", null] },
+            "modeTanpaStok": { "type": "boolean" },
+            "rekomendasi": {
+              "type": "array",
+              "maxItems": 5,
+              "items": {
+                "type": "object",
+                "required": [
+                  "kode", "id", "skorTotal", "skorSerapan", "skorKecocokanStok", "skorBudget", "skorWaktu",
+                  "belanjaTambahanRp", "belanjaTambahan", "bahanTerskala"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "kode": { "$ref": "#/definitions/kodeResep" },
+                  "id": { "type": "string" },
+                  "skorTotal": { "type": "number", "minimum": 0, "maximum": 100 },
+                  "skorSerapan": { "type": "number", "minimum": 0, "maximum": 50 },
+                  "skorKecocokanStok": { "type": "number", "minimum": 0, "maximum": 25 },
+                  "skorBudget": { "enum": [0, 8, 15] },
+                  "skorWaktu": { "enum": [0, 4, 7, 10] },
+                  "belanjaTambahanRp": { "type": "integer", "minimum": 0 },
+                  "belanjaTambahan": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": ["nama", "jumlah", "satuan", "rupiah"],
+                      "additionalProperties": false,
+                      "properties": {
+                        "nama": { "type": "string" },
+                        "jumlah": { "type": "integer", "minimum": 1 },
+                        "satuan": { "enum": ["gram", "ml", "pcs"] },
+                        "rupiah": { "type": "integer", "minimum": 0 }
+                      }
+                    }
+                  },
+                  "bahanTerskala": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": ["nama", "jumlah", "satuan"],
+                      "additionalProperties": false,
+                      "properties": {
+                        "nama": { "type": "string" },
+                        "jumlah": { "type": "integer", "minimum": 1 },
+                        "satuan": { "enum": ["gram", "ml", "pcs"] }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
