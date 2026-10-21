@@ -33,6 +33,18 @@ python -m pytest -q tests
 
 Keluaran evaluasi yang diharapkan: `12/12 resep lolos grade-2`.
 
+### QA gate rilis
+
+`python eval/evaluate.py` keluar dengan kode 0 hanya bila 12/12 resep lolos dan substitusi baku sah; selain itu kode 1 (rilis diblokir). Gerbang di CI infra cukup menjalankan perintah itu dan `python -m pytest -q tests`.
+
+Bukti QA gate dihasilkan, bukan disunting tangan:
+
+```bash
+python eval/evaluate.py --tulis eval/metrics.md   # tanggal hari ini; atau --tanggal YYYY-MM-DD
+```
+
+Uji `test_metrics_md_terbit_cocok_dengan_hasil_evaluasi` gagal bila `eval/metrics.md` tidak sama dengan hasil evaluasi saat ini.
+
 ## Menambah atau mengubah resep
 
 Bank dikunci 12 resep pada v1.0.0 (resep ke-13 hanya v2.0.0). Untuk mengubah isi resep:
