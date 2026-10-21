@@ -158,3 +158,12 @@ def test_harga_lumbung_g2_sesuai_brd(referensi):
         ref = referensi["bahan"][nama]
         assert (ref["per"], ref["harga"]) == (100, harga), nama
     assert referensi["bahan"]["santan"]["harga"] == 1500  # Rp3.000 per 200 ml
+
+
+def test_bentuk_entri_referensi_bahan(referensi):
+    for nama, e in referensi["bahan"].items():
+        assert set(e) == {"satuan", "per", "harga", "kkal", "sumber"}, nama
+        assert e["satuan"] in {"gram", "ml", "pcs"}
+        assert e["per"] == (1 if e["satuan"] == "pcs" else 100), nama
+        assert isinstance(e["harga"], int) and e["harga"] >= 0
+        assert isinstance(e["kkal"], int) and e["kkal"] >= 0

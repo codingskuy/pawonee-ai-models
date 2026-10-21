@@ -1,226 +1,366 @@
 {
+  "versiBank": "1.0.0",
+  "versiSkema": "1.0.0",
   "resep": [
     {
+      "kode": "R-01",
       "id": "tempe-tumis-bawang",
       "nama": "Tempe Tumis Bawang",
+      "kelompok": "tumis",
       "bahan": [
-        { "nama": "tempe", "jumlah": "1 papan" },
-        { "nama": "bawang merah", "jumlah": "5 siung" },
-        { "nama": "kecap manis", "jumlah": "2 sdm" },
-        { "nama": "garam", "jumlah": "1 sdt" }
+        {"nama": "tempe", "jumlah": 300, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "protein"},
+        {"nama": "bawang merah", "jumlah": 100, "satuan": "gram", "kodeGrade": "G2-U", "jenis": "sayur"},
+        {"nama": "cabai merah", "jumlah": 20, "satuan": "gram", "kodeGrade": "G2-V", "jenis": "bumbu"},
+        {"nama": "tomat", "jumlah": 160, "satuan": "gram", "kodeGrade": "G2-V", "jenis": "sayur"},
+        {"nama": "kecap manis", "jumlah": 30, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "garam", "jumlah": 4, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "minyak goreng", "jumlah": 36, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "bumbu"}
       ],
       "langkah": [
-        "Iris tempe tipis dan bawang merah.",
-        "Tumis bawang hingga harum, masukkan tempe.",
+        "Iris tempe tipis dan bawang merah; cabai diiris serong.",
+        "Panaskan minyak, tumis bawang dan cabai hingga harum, masukkan tempe dan tomat.",
         "Tambah kecap dan garam, masak 8 menit hingga kecokelatan."
       ],
       "menit": 15,
+      "jumlahKompor": 1,
       "levelPedas": 1,
-      "estimasiBiaya": 12000,
+      "estimasiBiaya": 19500,
+      "alergen": ["kedelai"],
+      "alat": ["kompor", "wajan"],
+      "flag": [],
+      "pendamping": {"nasi": true, "lauk": null},
       "grade": 2
     },
     {
+      "kode": "R-02",
       "id": "sayur-bening-bayam",
       "nama": "Sayur Bening Bayam",
+      "kelompok": "kuah",
       "bahan": [
-        { "nama": "bayam", "jumlah": "1 ikat" },
-        { "nama": "bawang merah", "jumlah": "3 siung" },
-        { "nama": "jagung manis", "jumlah": "1 buah" }
+        {"nama": "bayam", "jumlah": 400, "satuan": "gram", "kodeGrade": "G2-S", "jenis": "sayur"},
+        {"nama": "jagung manis", "jumlah": 250, "satuan": "gram", "kodeGrade": "G2-U", "jenis": "sayur"},
+        {"nama": "bawang merah", "jumlah": 50, "satuan": "gram", "kodeGrade": "G2-U", "jenis": "sayur"},
+        {"nama": "air", "jumlah": 600, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "cair"},
+        {"nama": "garam", "jumlah": 4, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "gula", "jumlah": 6, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"}
       ],
       "langkah": [
-        "Didihkan 600 ml air bersama irisan bawang.",
-        "Masukkan jagung, masak 4 menit.",
-        "Masukkan bayam, bumbui garam dan gula, masak 3 menit."
+        "Didihkan 600 ml air bersama irisan bawang merah.",
+        "Masukkan jagung yang dipipil atau dipotong, masak 4 menit.",
+        "Masukkan bayam, bumbui garam dan gula, masak 3 menit lalu angkat."
       ],
       "menit": 10,
+      "jumlahKompor": 1,
       "levelPedas": 0,
-      "estimasiBiaya": 8000,
+      "estimasiBiaya": 19000,
+      "alergen": ["kedelai"],
+      "alat": ["kompor", "panci"],
+      "flag": ["lunak-lansia"],
+      "pendamping": {"nasi": true, "lauk": "tempe"},
       "grade": 2
     },
     {
+      "kode": "R-03",
       "id": "telur-balado",
       "nama": "Telur Balado",
+      "kelompok": "lauk",
       "bahan": [
-        { "nama": "telur", "jumlah": "4 butir" },
-        { "nama": "cabai merah", "jumlah": "8 buah" },
-        { "nama": "bawang merah", "jumlah": "5 siung" },
-        { "nama": "tomat", "jumlah": "1 buah" }
+        {"nama": "telur", "jumlah": 4, "satuan": "pcs", "kodeGrade": "NON-G2", "jenis": "telur"},
+        {"nama": "cabai merah", "jumlah": 100, "satuan": "gram", "kodeGrade": "G2-V", "jenis": "bumbu"},
+        {"nama": "bawang merah", "jumlah": 50, "satuan": "gram", "kodeGrade": "G2-U", "jenis": "sayur"},
+        {"nama": "tomat", "jumlah": 160, "satuan": "gram", "kodeGrade": "G2-V", "jenis": "sayur"},
+        {"nama": "minyak goreng", "jumlah": 72, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "garam", "jumlah": 4, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "gula", "jumlah": 6, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"}
       ],
       "langkah": [
         "Rebus telur 10 menit, kupas dan goreng hingga berkulit.",
         "Haluskan cabai, bawang, dan tomat lalu tumis hingga tanak.",
-        "Masukkan telur, bumbui, masak 5 menit."
+        "Masukkan telur, bumbui garam dan gula, masak 5 menit."
       ],
       "menit": 25,
-      "levelPedas": 4,
-      "estimasiBiaya": 15000,
+      "jumlahKompor": 1,
+      "levelPedas": 3,
+      "estimasiBiaya": 24000,
+      "alergen": ["telur"],
+      "alat": ["kompor", "wajan", "panci"],
+      "flag": [],
+      "pendamping": {"nasi": true, "lauk": null},
       "grade": 2
     },
     {
+      "kode": "R-04",
       "id": "nasi-goreng-kampung",
       "nama": "Nasi Goreng Kampung",
+      "kelompok": "tumis",
       "bahan": [
-        { "nama": "nasi", "jumlah": "2 piring" },
-        { "nama": "telur", "jumlah": "1 butir" },
-        { "nama": "bawang putih", "jumlah": "3 siung" },
-        { "nama": "kecap manis", "jumlah": "3 sdm" }
+        {"nama": "nasi", "jumlah": 1000, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "karbo"},
+        {"nama": "telur", "jumlah": 4, "satuan": "pcs", "kodeGrade": "NON-G2", "jenis": "telur"},
+        {"nama": "wortel", "jumlah": 150, "satuan": "gram", "kodeGrade": "G2-V", "jenis": "sayur"},
+        {"nama": "cabai merah", "jumlah": 20, "satuan": "gram", "kodeGrade": "G2-V", "jenis": "bumbu"},
+        {"nama": "bawang putih", "jumlah": 20, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "kecap manis", "jumlah": 60, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "garam", "jumlah": 4, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "minyak goreng", "jumlah": 48, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "bumbu"}
       ],
       "langkah": [
         "Orak-arik telur, sisihkan.",
-        "Tumis bawang putih hingga harum.",
+        "Tumis bawang putih, cabai, dan wortel serut hingga harum.",
         "Masukkan nasi dan kecap, aduk 5 menit, campur telur."
       ],
       "menit": 15,
+      "jumlahKompor": 1,
       "levelPedas": 2,
-      "estimasiBiaya": 10000,
+      "estimasiBiaya": 20500,
+      "alergen": ["telur", "kedelai"],
+      "alat": ["kompor", "wajan"],
+      "flag": [],
+      "pendamping": {"nasi": false, "lauk": null},
       "grade": 2
     },
     {
+      "kode": "R-05",
       "id": "sop-ayam-sederhana",
       "nama": "Sop Ayam Sederhana",
+      "kelompok": "kuah",
       "bahan": [
-        { "nama": "ayam", "jumlah": "250 gram" },
-        { "nama": "wortel", "jumlah": "2 buah" },
-        { "nama": "kentang", "jumlah": "2 buah" },
-        { "nama": "bawang putih", "jumlah": "3 siung" }
+        {"nama": "ayam", "jumlah": 400, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "protein"},
+        {"nama": "wortel", "jumlah": 250, "satuan": "gram", "kodeGrade": "G2-V", "jenis": "sayur"},
+        {"nama": "kentang", "jumlah": 300, "satuan": "gram", "kodeGrade": "G2-U", "jenis": "sayur"},
+        {"nama": "bawang putih", "jumlah": 20, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "air", "jumlah": 800, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "cair"},
+        {"nama": "garam", "jumlah": 4, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "merica", "jumlah": 2, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "minyak goreng", "jumlah": 12, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "bumbu"}
       ],
       "langkah": [
         "Rebus ayam 10 menit, buang busanya.",
-        "Masukkan bawang putih, wortel, dan kentang.",
+        "Masukkan bawang putih tumis, wortel, dan kentang.",
         "Bumbui merica dan garam, masak 15 menit."
       ],
       "menit": 30,
+      "jumlahKompor": 1,
       "levelPedas": 0,
-      "estimasiBiaya": 20000,
+      "estimasiBiaya": 25500,
+      "alergen": [],
+      "alat": ["kompor", "panci"],
+      "flag": ["mengandung-daging", "varian-nabati", "lunak-lansia"],
+      "pendamping": {"nasi": true, "lauk": null},
       "grade": 2
     },
     {
+      "kode": "R-06",
       "id": "tumis-kangkung",
       "nama": "Tumis Kangkung",
+      "kelompok": "tumis",
       "bahan": [
-        { "nama": "kangkung", "jumlah": "2 ikat" },
-        { "nama": "bawang putih", "jumlah": "4 siung" },
-        { "nama": "cabai rawit", "jumlah": "3 buah" }
+        {"nama": "kangkung", "jumlah": 400, "satuan": "gram", "kodeGrade": "G2-S", "jenis": "sayur"},
+        {"nama": "bawang putih", "jumlah": 20, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "cabai rawit", "jumlah": 15, "satuan": "gram", "kodeGrade": "G2-V", "jenis": "bumbu"},
+        {"nama": "tomat", "jumlah": 160, "satuan": "gram", "kodeGrade": "G2-V", "jenis": "sayur"},
+        {"nama": "garam", "jumlah": 4, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "minyak goreng", "jumlah": 24, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "bumbu"}
       ],
       "langkah": [
-        "Siangi dan cuci kangkung.",
-        "Tumis bawang dan cabai hingga harum.",
-        "Masukkan kangkung, masak 4 menit dengan api besar."
+        "Siangi kangkung, potong 5 cm.",
+        "Tumis bawang putih dan cabai rawit dengan api besar hingga harum.",
+        "Masukkan kangkung dan tomat, garam, masak kurang dari 4 menit."
       ],
       "menit": 10,
+      "jumlahKompor": 1,
       "levelPedas": 3,
-      "estimasiBiaya": 9000,
+      "estimasiBiaya": 19500,
+      "alergen": ["kedelai"],
+      "alat": ["kompor", "wajan"],
+      "flag": [],
+      "pendamping": {"nasi": true, "lauk": "tempe"},
       "grade": 2
     },
     {
+      "kode": "R-07",
       "id": "semur-tahu",
       "nama": "Semur Tahu",
+      "kelompok": "lauk",
       "bahan": [
-        { "nama": "tahu", "jumlah": "6 potong" },
-        { "nama": "kecap manis", "jumlah": "4 sdm" },
-        { "nama": "bawang merah", "jumlah": "5 siung" }
+        {"nama": "tahu", "jumlah": 400, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "protein"},
+        {"nama": "kentang", "jumlah": 250, "satuan": "gram", "kodeGrade": "G2-U", "jenis": "sayur"},
+        {"nama": "bawang merah", "jumlah": 50, "satuan": "gram", "kodeGrade": "G2-U", "jenis": "sayur"},
+        {"nama": "bawang putih", "jumlah": 15, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "kecap manis", "jumlah": 60, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "air", "jumlah": 400, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "cair"},
+        {"nama": "garam", "jumlah": 4, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "gula", "jumlah": 6, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "minyak goreng", "jumlah": 36, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "bumbu"}
       ],
       "langkah": [
-        "Goreng tahu setengah kering.",
-        "Tumis bawang hingga harum.",
-        "Masukkan tahu dan kecap, tambah air, masak 10 menit."
+        "Potong tahu dan kentang dadu 2 cm.",
+        "Tumis bawang, tambah air dan kecap, didihkan.",
+        "Masukkan tahu dan kentang, masak 12 menit hingga bumbu meresap."
       ],
       "menit": 20,
+      "jumlahKompor": 1,
       "levelPedas": 1,
-      "estimasiBiaya": 11000,
+      "estimasiBiaya": 19500,
+      "alergen": ["kedelai"],
+      "alat": ["kompor", "wajan"],
+      "flag": ["lunak-lansia"],
+      "pendamping": {"nasi": true, "lauk": null},
       "grade": 2
     },
     {
+      "kode": "R-08",
       "id": "pecel-sayur",
       "nama": "Pecel Sayur",
+      "kelompok": "kukus",
       "bahan": [
-        { "nama": "bayam", "jumlah": "1 ikat" },
-        { "nama": "taoge", "jumlah": "100 gram" },
-        { "nama": "bumbu pecel", "jumlah": "3 sdm" }
+        {"nama": "bayam", "jumlah": 200, "satuan": "gram", "kodeGrade": "G2-S", "jenis": "sayur"},
+        {"nama": "taoge", "jumlah": 150, "satuan": "gram", "kodeGrade": "G2-S", "jenis": "sayur"},
+        {"nama": "wortel", "jumlah": 100, "satuan": "gram", "kodeGrade": "G2-V", "jenis": "sayur"},
+        {"nama": "bumbu pecel", "jumlah": 100, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "cabai merah", "jumlah": 15, "satuan": "gram", "kodeGrade": "G2-V", "jenis": "bumbu"},
+        {"nama": "air", "jumlah": 150, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "cair"}
       ],
       "langkah": [
-        "Rebus bayam dan taoge, tiriskan.",
-        "Encerkan bumbu pecel dengan air hangat.",
-        "Tata sayur dan siram bumbu."
+        "Rebus wortel serut 3 menit, lalu bayam dan taoge 2 menit, tiriskan.",
+        "Larutkan bumbu pecel dengan air hangat dan cabai ulek.",
+        "Siram sayur dengan bumbu pecel."
       ],
       "menit": 15,
+      "jumlahKompor": 1,
       "levelPedas": 3,
-      "estimasiBiaya": 10000,
+      "estimasiBiaya": 20000,
+      "alergen": ["kacang-tanah", "kedelai"],
+      "alat": ["kompor", "panci"],
+      "flag": ["lunak-lansia"],
+      "pendamping": {"nasi": true, "lauk": "tempe"},
       "grade": 2
     },
     {
+      "kode": "R-09",
       "id": "ayam-kecap-rumahan",
       "nama": "Ayam Kecap Rumahan",
+      "kelompok": "lauk",
       "bahan": [
-        { "nama": "ayam", "jumlah": "500 gram" },
-        { "nama": "kecap manis", "jumlah": "5 sdm" },
-        { "nama": "bawang bombai", "jumlah": "1 buah" }
+        {"nama": "ayam", "jumlah": 400, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "protein"},
+        {"nama": "bawang bombai", "jumlah": 150, "satuan": "gram", "kodeGrade": "G2-U", "jenis": "sayur"},
+        {"nama": "cabai merah", "jumlah": 20, "satuan": "gram", "kodeGrade": "G2-V", "jenis": "bumbu"},
+        {"nama": "bawang putih", "jumlah": 15, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "kecap manis", "jumlah": 75, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "air", "jumlah": 100, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "cair"},
+        {"nama": "garam", "jumlah": 4, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "minyak goreng", "jumlah": 24, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "bumbu"}
       ],
       "langkah": [
-        "Tumis bawang bombai hingga layu.",
-        "Masukkan ayam, aduk hingga berubah warna.",
-        "Tambah kecap dan 200 ml air, masak 20 menit."
+        "Potong ayam 12 bagian, lumuri garam.",
+        "Tumis bawang putih dan bombai, masukkan ayam hingga berubah warna.",
+        "Tambah kecap dan air, masak 20 menit hingga mengental."
       ],
       "menit": 30,
+      "jumlahKompor": 1,
       "levelPedas": 1,
-      "estimasiBiaya": 28000,
+      "estimasiBiaya": 23000,
+      "alergen": ["kedelai"],
+      "alat": ["kompor", "wajan"],
+      "flag": ["mengandung-daging", "varian-nabati"],
+      "pendamping": {"nasi": true, "lauk": null},
       "grade": 2
     },
     {
-      "id": "sop-benih-jagung",
+      "kode": "R-10",
+      "id": "sop-jagung-telur",
       "nama": "Sop Jagung Telur",
+      "kelompok": "kuah",
       "bahan": [
-        { "nama": "jagung manis", "jumlah": "2 buah" },
-        { "nama": "telur", "jumlah": "2 butir" },
-        { "nama": "wortel", "jumlah": "1 buah" }
+        {"nama": "jagung manis", "jumlah": 500, "satuan": "gram", "kodeGrade": "G2-U", "jenis": "sayur"},
+        {"nama": "telur", "jumlah": 4, "satuan": "pcs", "kodeGrade": "NON-G2", "jenis": "telur"},
+        {"nama": "wortel", "jumlah": 150, "satuan": "gram", "kodeGrade": "G2-V", "jenis": "sayur"},
+        {"nama": "bawang putih", "jumlah": 10, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "air", "jumlah": 800, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "cair"},
+        {"nama": "garam", "jumlah": 4, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "merica", "jumlah": 2, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "minyak goreng", "jumlah": 24, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "bumbu"}
       ],
       "langkah": [
-        "Sisir jagung, rebus bersama wortel 10 menit.",
-        "Kocok telur, tuang perlahan sambil diaduk.",
-        "Bumbui garam dan merica, masak 3 menit."
+        "Pipil jagung, potong wortel dadu kecil.",
+        "Tumis bawang putih, tambah air dan jagung, didihkan 10 menit.",
+        "Masukkan wortel, lalu kocok telur dan tuang sambil diaduk, bumbui."
       ],
       "menit": 20,
+      "jumlahKompor": 1,
       "levelPedas": 0,
-      "estimasiBiaya": 12000,
+      "estimasiBiaya": 20500,
+      "alergen": ["telur"],
+      "alat": ["kompor", "panci"],
+      "flag": ["lunak-lansia"],
+      "pendamping": {"nasi": true, "lauk": null},
       "grade": 2
     },
     {
+      "kode": "R-11",
       "id": "sambal-goreng-tempe-kentang",
       "nama": "Sambal Goreng Tempe Kentang",
+      "kelompok": "sambal",
       "bahan": [
-        { "nama": "tempe", "jumlah": "1 papan" },
-        { "nama": "kentang", "jumlah": "2 buah" },
-        { "nama": "cabai merah", "jumlah": "6 buah" },
-        { "nama": "santan", "jumlah": "200 ml" }
+        {"nama": "tempe", "jumlah": 300, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "protein"},
+        {"nama": "kentang", "jumlah": 300, "satuan": "gram", "kodeGrade": "G2-U", "jenis": "sayur"},
+        {"nama": "cabai merah", "jumlah": 100, "satuan": "gram", "kodeGrade": "G2-V", "jenis": "bumbu"},
+        {"nama": "bawang merah", "jumlah": 50, "satuan": "gram", "kodeGrade": "G2-U", "jenis": "sayur"},
+        {"nama": "santan", "jumlah": 200, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "santan"},
+        {"nama": "garam", "jumlah": 4, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "gula", "jumlah": 6, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "minyak goreng", "jumlah": 12, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "bumbu"}
       ],
       "langkah": [
-        "Potong dadu tempe dan kentang, goreng hingga matang.",
-        "Tumis bumbu halus hingga tanak.",
-        "Masukkan santan, tempe, dan kentang, masak 10 menit."
+        "Panggang-goreng tempe dan kentang dadu dengan sedikit minyak hingga kecokelatan.",
+        "Haluskan cabai dan bawang, tumis hingga harum.",
+        "Masukkan santan, tempe, dan kentang, masak 10 menit hingga kental."
       ],
       "menit": 30,
+      "jumlahKompor": 1,
       "levelPedas": 3,
-      "estimasiBiaya": 18000,
+      "estimasiBiaya": 24500,
+      "alergen": ["kedelai"],
+      "alat": ["kompor", "wajan"],
+      "flag": ["mengandung-santan"],
+      "pendamping": {"nasi": true, "lauk": null},
       "grade": 2
     },
     {
+      "kode": "R-12",
       "id": "capcay-kuah",
       "nama": "Capcay Kuah",
+      "kelompok": "kuah",
       "bahan": [
-        { "nama": "wortel", "jumlah": "1 buah" },
-        { "nama": "sawi", "jumlah": "1 ikat" },
-        { "nama": "bakso", "jumlah": "5 butir" },
-        { "nama": "bawang putih", "jumlah": "3 siung" }
+        {"nama": "wortel", "jumlah": 150, "satuan": "gram", "kodeGrade": "G2-V", "jenis": "sayur"},
+        {"nama": "sawi hijau", "jumlah": 200, "satuan": "gram", "kodeGrade": "G2-S", "jenis": "sayur"},
+        {"nama": "kol", "jumlah": 150, "satuan": "gram", "kodeGrade": "G2-U", "jenis": "sayur"},
+        {"nama": "taoge", "jumlah": 100, "satuan": "gram", "kodeGrade": "G2-S", "jenis": "sayur"},
+        {"nama": "bakso", "jumlah": 150, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "protein"},
+        {"nama": "bawang putih", "jumlah": 15, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "maizena", "jumlah": 10, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "air", "jumlah": 600, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "cair"},
+        {"nama": "garam", "jumlah": 4, "satuan": "gram", "kodeGrade": "NON-G2", "jenis": "bumbu"},
+        {"nama": "minyak goreng", "jumlah": 12, "satuan": "ml", "kodeGrade": "NON-G2", "jenis": "bumbu"}
       ],
       "langkah": [
-        "Tumis bawang putih hingga harum.",
-        "Masukkan wortel dan bakso, tambah 400 ml air.",
-        "Masukkan sawi, bumbui, masak 5 menit."
+        "Tumis bawang putih, masukkan bakso dan bahan keras (wortel, kol) 7 menit dengan air.",
+        "Masukkan sawi dan taoge, masak 2 menit.",
+        "Kentalkan dengan larutan maizena, bumbui garam."
       ],
       "menit": 15,
+      "jumlahKompor": 1,
       "levelPedas": 1,
-      "estimasiBiaya": 14000,
+      "estimasiBiaya": 22500,
+      "alergen": ["kedelai"],
+      "alat": ["kompor", "wajan"],
+      "flag": ["mengandung-daging", "lunak-lansia", "sapu-stok"],
+      "pendamping": {"nasi": true, "lauk": "tahu"},
       "grade": 2
     }
+  ],
+  "substitusi": [
+    {"id": "SUB-01", "sumber": "BR-103", "hilang": {"nama": "ayam", "jumlah": 100, "satuan": "gram"}, "pengganti": [{"komponen": [{"nama": "telur", "jumlah": 2, "satuan": "pcs", "kodeGrade": "NON-G2"}], "alergen": ["telur"], "tambahMenit": 0}, {"komponen": [{"nama": "tahu", "jumlah": 200, "satuan": "gram", "kodeGrade": "NON-G2"}], "alergen": ["kedelai"], "tambahMenit": 0}, {"komponen": [{"nama": "tempe", "jumlah": 150, "satuan": "gram", "kodeGrade": "NON-G2"}], "alergen": ["kedelai"], "tambahMenit": 0}]},
+    {"id": "SUB-02", "sumber": "BR-103", "hilang": {"nama": "santan", "jumlah": 400, "satuan": "ml"}, "pengganti": [{"komponen": [{"nama": "susu kedelai", "jumlah": 400, "satuan": "ml", "kodeGrade": "NON-G2"}, {"nama": "minyak kelapa", "jumlah": 10, "satuan": "ml", "kodeGrade": "NON-G2"}], "alergen": ["kedelai"], "tambahMenit": 0}]},
+    {"id": "SUB-03", "sumber": "BR-103", "hilang": {"nama": "kentang", "jumlah": 500, "satuan": "gram"}, "pengganti": [{"komponen": [{"nama": "ubi kuning", "jumlah": 500, "satuan": "gram", "kodeGrade": "G2-U"}], "alergen": [], "tambahMenit": 5}]}
   ]
 }
